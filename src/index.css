@@ -1,3 +1,14 @@
+@font-face {
+  font-family: 'FrederickatheGreat';
+  src: url('./assets/fonts/frederickathe-great/FrederickatheGreat-Regular.ttf');
+}
+@font-face {
+  font-family: 'Monoton';
+  src: url('./assets/fonts/monoton/Monoton-Regular.ttf');
+}
+html, body {
+  height: 100%;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +16,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #666666;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

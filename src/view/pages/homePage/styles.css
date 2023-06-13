@@ -1,0 +1,40 @@
+/**
+ * Home page style
+ * 
+ * @author - Faizal
+ * @date - 14th June, 2023 
+ */
+ .root {
+    width: 800px;
+    margin: 0 auto 0 auto;
+    text-align: center;
+    border: 1px solid #e3e5e7;
+    padding: 30px 30px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px #e3e5e7;
+ }
+ .row-box {
+    height: 73px;
+ }
+ .text-field {
+    width: 100%
+ }
+ .text-field .MuiInputBase-input {
+    padding-top: 12px;
+    padding-bottom: 12px;
+ }
+ .select-field .MuiInputLabel-formControl {
+    line-height: 18px;
+ }
+ .text-field .MuiInputLabel-formControl {
+    line-height: 16px;
+ }
+ .form-layout {
+   height: 100%;
+ }
+ .text-field .MuiOutlinedInput-notchedOutline, .select-field .MuiOutlinedInput-notchedOutline {
+   border-color: #e3e5e7;
+ }
+ .alert {
+   margin-bottom: 20px
+ }
