@@ -8,10 +8,11 @@
 import {yupResolver} from '@hookform/resolvers/yup';
 import {SetStateAction, Dispatch, useState} from 'react';
 import { useForm } from "react-hook-form";
-import { Chip, TextField, SelectField } from "../../../atoms";
 import {Box, Button, Grid, Alert, FormHelperText} from '@mui/material';
+import {KeyboardArrowRight, KeyboardArrowLeft, KeyboardArrowDown, KeyboardArrowUp, DragIndicator} from '@mui/icons-material';
 
 // HOME IMPORT
+import { Chip, TextField, SelectField } from "../../../atoms";
 import {CubeFormType, CubeReportType, cubeFormDefaultValue} from '../../../../models/cubeForm';
 import schema from '../schema';
 
@@ -109,7 +110,6 @@ const CubeForm = ({
         <form onSubmit={handleSubmit(onSubmit)} className='form-layout'>
             <input type="hidden" id="cmd" {...register("cmd" as const)} value={watch("cmd")} />
             <Box display='flex' flexDirection='column' height="100%">
-
                 {report?.facingDirection && 
                     <Alert severity="success" className='alert'>
                         Report: {report.xPoint}, {report.yPoint}, {facingDirectionMap[report.facingDirection]}
@@ -162,11 +162,11 @@ const CubeForm = ({
                             {data.cmd?.map((item, index) => (<Chip onDelete={() => deleteCmd(index)} label={item} size="small" key={index} />))}
                         </Box>
                         <Box display='flex' gap={1}>
-                            <Button variant="outlined" size="small" onClick={() => addCmd(DirectionCmd.move)}>Move</Button>
-                            <Button variant="outlined" size="small" onClick={() => addCmd(DirectionCmd.left)}>Left</Button>
-                            <Button variant="outlined" size="small" onClick={() => addCmd(DirectionCmd.right)}>Right</Button>
-                            <Button variant="outlined" size="small" onClick={() => addCmd(DirectionCmd.up)}>Up</Button>
-                            <Button variant="outlined" size="small" onClick={() => addCmd(DirectionCmd.down)}>Down</Button>
+                            <Button variant="outlined" size="small" endIcon={<DragIndicator/>} onClick={() => addCmd(DirectionCmd.move)}>Move</Button>
+                            <Button variant="outlined" size="small" endIcon={<KeyboardArrowLeft/>}  onClick={() => addCmd(DirectionCmd.left)}>Left</Button>
+                            <Button variant="outlined" size="small" endIcon={<KeyboardArrowRight/>}  onClick={() => addCmd(DirectionCmd.right)}>Right</Button>
+                            <Button variant="outlined" size="small" endIcon={<KeyboardArrowUp/>}  onClick={() => addCmd(DirectionCmd.up)}>Up</Button>
+                            <Button variant="outlined" size="small" endIcon={<KeyboardArrowDown/>}  onClick={() => addCmd(DirectionCmd.down)}>Down</Button>
                         </Box>
                         <FormHelperText error>{errors?.cmd && errors.cmd.message}</FormHelperText>
                     </Grid>

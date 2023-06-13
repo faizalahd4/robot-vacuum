@@ -22,11 +22,11 @@ const HomePage = () => {
     const [formState, setFormState] = useState<CubeFormType>(cubeFormDefaultValue);
     const [currentCubeId, setCurrentCubeId] = useState<string>(`${formState.xPoint}-${formState.yPoint}`);
     return (
-        <Box className='root' display='flex'>
+        <Box className='root' display='flex' gap={5}>
             <Box flex={1}>  
                 <CubeForm data={formState} setData={setFormState} setCurrentCubeId={setCurrentCubeId}/>
             </Box>
-            <Box flex={1}>  
+            <Box width={365}>  
                 <Cubes currentCubeId={currentCubeId}/>
             </Box>
         </Box>

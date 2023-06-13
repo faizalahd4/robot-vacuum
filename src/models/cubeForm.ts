@@ -1,4 +1,4 @@
-import {FacingDirection, DirectionCmd} from '../utils/enum';
+import {DirectionCmd} from '../utils/enum';
 
 export type CubeFormType = {
     xPoint: string;
