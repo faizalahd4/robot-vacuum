@@ -5,7 +5,7 @@
  * @date - 14th June, 2023 
  */
 export enum FacingDirection {
-    north = 0,
+    north = 1,
     south,
     east,
     west,

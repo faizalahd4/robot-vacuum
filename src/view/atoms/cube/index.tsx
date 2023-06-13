@@ -4,8 +4,11 @@
  * @author - Faizal
  * @date - 14th June, 2023 
  */
+// GENERIC IMPORT
 import clsx from 'clsx';
 import {Box} from '@mui/material';
+
+// STYLE IMPORT
 import './styles.css';
 
 type CubeProps = {

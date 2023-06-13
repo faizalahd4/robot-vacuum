@@ -4,9 +4,14 @@
  * @author - Faizal
  * @date - 14th June, 2023 
  */
+// GENERIC IMPORT
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// PAGES IMPORT
 import HomePage from '../pages/homePage';
 import Header from '../pages/common/header';
+
+// ROUTER IMPORT
 import * as PATH from './constants';
 
 const AppRoutes = () => {

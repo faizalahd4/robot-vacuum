@@ -4,9 +4,16 @@
  * @author - Faizal
  * @date - 14th June, 2023 
  */
+// GENERIC IMPORT
 import {Box} from '@mui/material';
+
+// ATOMS IMPORT
 import {Cube} from '../../../atoms';
+
+// UTILS IMPORT
 import {CUBE_PER_ROW, CUBE_PER_COLUMN} from '../../../../utils/constants';
+
+// STYLE IMPORT
 import '../styles.css';
 
 type CubesProps = {

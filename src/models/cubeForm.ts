@@ -1,21 +1,21 @@
 import {FacingDirection, DirectionCmd} from '../utils/enum';
 
 export type CubeFormType = {
-    xPoint: number;
-    yPoint: number;
-    facingDirection: FacingDirection | null; 
+    xPoint: string;
+    yPoint: string;
+    facingDirection: string;
     cmd: DirectionCmd[];
 }
 
 export type CubeReportType = {
-    xPoint: number;
-    yPoint: number;
-    facingDirection: FacingDirection | null;
+    xPoint: string;
+    yPoint: string;
+    facingDirection: string;
 }
 
-export const cubeFormDefaultValue = {
-    xPoint: 0, 
-    yPoint: 0,
-    facingDirection: null,
+export const cubeFormDefaultValue: CubeFormType = {
+    xPoint: '',
+    yPoint: '',
+    facingDirection: '',
     cmd: [],
 }

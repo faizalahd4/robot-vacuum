@@ -6,24 +6,24 @@
  */
 import {DirectionCmd, FacingDirection} from './enum';
 
-export const directionCmdChoices = [
-  {value: DirectionCmd.move, label: 'Move'},
-  {value: DirectionCmd.left, label: 'Left'},
-  {value: DirectionCmd.right, label: 'Right'},
-  {value: DirectionCmd.up, label: 'Up'},
-  {value: DirectionCmd.down, label: 'Down'},
-];
-
-export const facingDirectionMap = {
+export const facingDirectionMap: Record<string, string> = {
   [FacingDirection.east]: 'East',
   [FacingDirection.north]: 'North',
   [FacingDirection.south]: 'South',
   [FacingDirection.west]: 'West',
 };
 
-export const cmdFacingDirectionMap = {
+export const cmdFacingDirectionMap: Record<DirectionCmd, FacingDirection> = {
+  [DirectionCmd.move]: FacingDirection.west,
   [DirectionCmd.left]: FacingDirection.west,
   [DirectionCmd.right]: FacingDirection.east,
   [DirectionCmd.up]: FacingDirection.north,
   [DirectionCmd.down]: FacingDirection.south,
 };
+
+export const facingDirectionChoice = [
+  { label: 'North', value: FacingDirection.north },
+  { label: 'South', value: FacingDirection.south },
+  { label: 'East', value: FacingDirection.east },
+  { label: 'West', value: FacingDirection.west },
+];
