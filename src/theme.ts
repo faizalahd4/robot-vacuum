@@ -30,6 +30,7 @@ const theme = createTheme({
           root: {
             '&:hover': {
               backgroundColor: '#1876d2',
+              color: '#fff',
             },
           },
         },
