@@ -17,7 +17,7 @@ const Alert = ({
   isShow,
   ...rest
 }: AlertProps) => (
-  <>{isShow && <MuiAlert {...rest} >{content}</MuiAlert>}</>
+  <>{isShow && <MuiAlert {...rest} role='alert'>{content}</MuiAlert>}</>
 );
 
 export default Alert;

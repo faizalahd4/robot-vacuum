@@ -24,7 +24,7 @@ const Button = ({
     const classes = useStyles();
 
     return (
-        <MuiButton {...rest} className={classes.root}>{label}</MuiButton>
+        <MuiButton {...rest} className={classes.root} role='button'>{label}</MuiButton>
     )
 }
 

@@ -74,7 +74,7 @@ const CubeForm = ({
             <input type="hidden" id="cmd" {...register("cmd" as const)} value={watch("cmd")} />
             <Box display='flex' flexDirection='column' height="100%">
                 <Box mb={2.5}>
-                    <Alert severity="success" className='alert' isShow={Boolean(report?.facingDirection)} content={`Report: ${report.xPoint}, ${report.yPoint}, ${facingDirectionMap[report.facingDirection]}`}/>
+                    <Alert severity="success" isShow={Boolean(report?.facingDirection)} content={`Report: ${report.xPoint}, ${report.yPoint}, ${facingDirectionMap[report.facingDirection]}`}/>
                 </Box>
                 <Grid container spacing={1}>
                     <Grid item xs={6}>
@@ -106,8 +106,8 @@ const CubeForm = ({
                 <CmdField {...{data, errors, addCmd, deleteCmd}}/>
                 <Grid container spacing={1} mt={1}>
                     <Grid item xs={12} display='inline-flex' justifyContent='flex-end' gap={1}>
-                        <Button variant="contained" type="submit" label='Report'/>
-                        <Button variant="outlined" onClick={resetHandler} label='Cancel'/>
+                        <Button variant="contained" type="submit" label='Report' data-testid="submit-form"/>
+                        <Button variant="outlined" onClick={resetHandler} label='Cancel' data-testid="cancel-form"/>
                     </Grid>
                 </Grid>
             </Box>

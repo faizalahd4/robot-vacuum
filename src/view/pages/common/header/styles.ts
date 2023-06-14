@@ -4,6 +4,7 @@
  * @author - Faizal
  * @date - 14th June, 2023 
  */
+// GENERIC IMPORT
 import { makeStyles } from '@mui/styles';
 import { Theme } from "@mui/system";
 

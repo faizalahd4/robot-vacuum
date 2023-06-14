@@ -9,9 +9,9 @@ import { Theme } from "@mui/system";
 
 const useStyles = makeStyles(({breakpoints} : Theme) => ({
     root: {
+        boxSizing: 'border-box',
         [breakpoints.down('sm')]: {
-            width: '100%',
-            boxSizing: 'border-box',
+            width: '100%', 
         },
     },
 }));
