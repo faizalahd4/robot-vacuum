@@ -35,14 +35,12 @@ const Vacuum = ({
             const left = selectedCube.getBoundingClientRect().left - selectedCubeContainer.getBoundingClientRect().left + 10;
             setPosition({x: top, y: left});
         }
-    }, [currentCubeId]);
+    }, [currentCubeId]); // eslint-disable-line react-hooks/exhaustive-deps
 
 
     useEffect(() => {
-        if (rotate) {
-            setRotation(rotate);
-        }
-    }, [cmdIndex, rotate]);
+        setRotation(rotate);
+    }, [cmdIndex, rotate]); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <img src={VacuumImage} 

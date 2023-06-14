@@ -67,7 +67,9 @@ const TextField = ({
                             props.field.onChange(value);
                         }
                     }}
-                    InputProps={{
+                    inputProps={{
+                        min: 0,
+                        max: 4,
                         autoComplete: 'off',
                         role: 'presentation',
                         classes: {

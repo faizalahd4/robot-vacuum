@@ -19,3 +19,11 @@ export const cubeFormDefaultValue: CubeFormType = {
     facingDirection: '',
     cmd: [],
 }
+
+export const cubeReportDefaultValue: CubeReportType = {
+    xPoint: '', 
+    yPoint: '',
+    facingDirection: '',
+}
+
+        

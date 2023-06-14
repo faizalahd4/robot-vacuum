@@ -16,6 +16,9 @@
     line-height: 10px;
     font-size: 13px;
 }
+.inputFieldContainer .MuiOutlinedInput-input {
+    padding: 10px 14px;
+}
 .textFieldRoot {
     padding: 8px 0;
     height: 40px;

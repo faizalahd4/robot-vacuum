@@ -1,5 +1,5 @@
 /**
- * Validation messager
+ * Validation schema
  * 
  * @author - Faizal
  * @date - 14th June, 2023 
@@ -17,7 +17,7 @@ const schema =
     xPoint: yup.string().nullable().required(formValidationMessages.required()),
     yPoint: yup.string().nullable().required(formValidationMessages.required()),
     facingDirection: yup.string().nullable().required(formValidationMessages.required()),
-    cmd: yup.array().of(yup.string().required().oneOf(Object.values(DirectionCmd))).defined().min(1, formValidationMessages.required()).max(20, 'Can provide maximum 20 command'),
+    cmd: yup.array().of(yup.string().required().oneOf(Object.values(DirectionCmd))).defined().min(1, formValidationMessages.cmdRequired()).max(20, 'Can provide maximum 20 command'),
   });
 
 export default schema;

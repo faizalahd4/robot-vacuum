@@ -8,4 +8,5 @@
 // GENERIC FE MESSAGE
 export const formValidationMessages = {
     required: () => 'This field is required',
+    cmdRequired: () => 'Select atleast one command'
 };

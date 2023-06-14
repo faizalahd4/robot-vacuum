@@ -1,5 +1,5 @@
 /**
- * Home page
+ * Cubes component
  * 
  * @author - Faizal
  * @date - 14th June, 2023 
