@@ -65,7 +65,6 @@ const SelectField = ({
                         fullWidth
                         onChange={(e) => {
                             const {value} = e.target;
-                            console.log(typeof value);
                             props.field.onChange(value);
                         }}
                         inputprops={{

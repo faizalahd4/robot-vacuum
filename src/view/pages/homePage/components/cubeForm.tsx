@@ -9,7 +9,7 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import {SetStateAction, Dispatch, useState} from 'react';
 import { useForm } from "react-hook-form";
 import {Box, Button, Grid, Alert, FormHelperText} from '@mui/material';
-import {KeyboardArrowRight, KeyboardArrowLeft, KeyboardArrowDown, KeyboardArrowUp, DragIndicator} from '@mui/icons-material';
+import {KeyboardArrowRight, KeyboardArrowLeft, DragIndicator} from '@mui/icons-material';
 
 // HOME IMPORT
 import { Chip, TextField, SelectField } from "../../../atoms";
@@ -18,7 +18,7 @@ import schema from '../schema';
 
 // UTILS IMPORT
 import {FacingDirection, DirectionCmd} from '../../../../utils/enum';
-import {facingDirectionMap, cmdFacingDirectionMap, facingDirectionChoice} from '../../../../utils/choices';
+import {facingDirectionMap, cmdFacingDirectionMap, facingDirectionChoice, rotateDegreeMap, facingDirectionDegreeMap} from '../../../../utils/choices';
 
 // STYLE IMPORT
 import '../styles.css';
@@ -26,13 +26,17 @@ import '../styles.css';
 type CubeFormProps = {
     data: CubeFormType;
     setData: Dispatch<SetStateAction<CubeFormType>>;
-    setCurrentCubeId: Dispatch<SetStateAction<string>>;
+    setCurrentCubeId: Dispatch<SetStateAction<string | null>>;
+    setRotate: Dispatch<SetStateAction<number>>;
+    setCmdIndex: Dispatch<SetStateAction<number>>;
 }
 
 const CubeForm = ({
     data,
     setData,
     setCurrentCubeId,
+    setRotate,
+    setCmdIndex,
 }: CubeFormProps) => {
     const [report, setReport] = useState<CubeReportType>({
         xPoint: '', 
@@ -52,6 +56,13 @@ const CubeForm = ({
 
     const onSubmit = (formData: CubeFormType) => {
         setData(formData);
+        setReport({
+            facingDirection: formData.facingDirection,
+            xPoint: Number(formData.xPoint).toString(),
+            yPoint: Number(formData.yPoint).toString(),
+        });
+        setRotate(facingDirectionDegreeMap[formData.facingDirection]);
+        setCurrentCubeId(`${formData.xPoint}-${formData.yPoint}`);
         updateDirection(formData);
     }
 
@@ -71,38 +82,44 @@ const CubeForm = ({
         let reportDirection = formData.facingDirection;
         let reportXPoint = Number(formData.xPoint);
         let reportYPoint = Number(formData.yPoint);
-        formData.cmd.forEach(item => {
-            if (item === DirectionCmd.move) {
-                switch (reportDirection) {
-                    case FacingDirection.west.toString():
-                        reportYPoint -= 1;
-                        break;
-                    case FacingDirection.east.toString():
-                        reportYPoint += 1;
-                        break;
-                    case FacingDirection.north.toString():
-                        reportXPoint -= 1;
-                        break;
-                    case FacingDirection.south.toString():
-                        reportXPoint += 1;
-                        break;
+        
+        formData.cmd.forEach((item, index) => {
+            setTimeout(() => {
+                if (item === DirectionCmd.move) {
+                    switch (reportDirection) {
+                        case FacingDirection.west.toString():
+                            reportYPoint -= 1;
+                            break;
+                        case FacingDirection.east.toString():
+                            reportYPoint += 1;
+                            break;
+                        case FacingDirection.north.toString():
+                            reportXPoint -= 1;
+                            break;
+                        case FacingDirection.south.toString():
+                            reportXPoint += 1;
+                            break;
+                    }
+                } else {
+                    reportDirection = cmdFacingDirectionMap[reportDirection][item].toString();
+                    setRotate(prevRotate =>  prevRotate + rotateDegreeMap[item]);
                 }
-            } else {
-                reportDirection = cmdFacingDirectionMap[item].toString();
-            }
+                setReport({
+                    facingDirection: reportDirection,
+                    xPoint: reportXPoint.toString(),
+                    yPoint: reportYPoint.toString(),
+                });
+                setCurrentCubeId(`${reportXPoint}-${reportYPoint}`);
+                setCmdIndex(index);
+            }, (index + 1) * 2000);
         });
-        setReport({
-            ...report,
-            facingDirection: reportDirection,
-            xPoint: reportXPoint.toString(),
-            yPoint: reportYPoint.toString(),
-        });
-        setCurrentCubeId(`${reportXPoint}-${reportYPoint}`);
+        
     }
 
     const resetHandler = () => {
         reset({...cubeFormDefaultValue, facingDirection: ''});
         setData({...cubeFormDefaultValue, facingDirection: ''});
+        setReport({xPoint: '',  yPoint: '', facingDirection: ''});
         setCurrentCubeId('0-0');
     }
 
@@ -158,17 +175,15 @@ const CubeForm = ({
                 </Grid>
                 <Grid container spacing={1} mt={1} flex={1}>
                     <Grid item xs={12}>
-                        <Box display='flex' mb={1} gap={1}>
-                            {data.cmd?.map((item, index) => (<Chip onDelete={() => deleteCmd(index)} label={item} size="small" key={index} />))}
-                        </Box>
                         <Box display='flex' gap={1}>
                             <Button variant="outlined" size="small" endIcon={<DragIndicator/>} onClick={() => addCmd(DirectionCmd.move)}>Move</Button>
                             <Button variant="outlined" size="small" endIcon={<KeyboardArrowLeft/>}  onClick={() => addCmd(DirectionCmd.left)}>Left</Button>
                             <Button variant="outlined" size="small" endIcon={<KeyboardArrowRight/>}  onClick={() => addCmd(DirectionCmd.right)}>Right</Button>
-                            <Button variant="outlined" size="small" endIcon={<KeyboardArrowUp/>}  onClick={() => addCmd(DirectionCmd.up)}>Up</Button>
-                            <Button variant="outlined" size="small" endIcon={<KeyboardArrowDown/>}  onClick={() => addCmd(DirectionCmd.down)}>Down</Button>
                         </Box>
                         <FormHelperText error>{errors?.cmd && errors.cmd.message}</FormHelperText>
+                        <Box display='flex' mt={1} gap={1}>
+                            {data.cmd?.map((item, index) => (<Chip onDelete={() => deleteCmd(index)} label={item} size="small" key={index} />))}
+                        </Box>
                     </Grid>
                 </Grid>
                 <Grid container spacing={1} mt={1}>

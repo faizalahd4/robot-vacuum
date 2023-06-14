@@ -20,14 +20,20 @@ import './styles.css';
 
 const HomePage = () => {
     const [formState, setFormState] = useState<CubeFormType>(cubeFormDefaultValue);
-    const [currentCubeId, setCurrentCubeId] = useState<string>(`${formState.xPoint}-${formState.yPoint}`);
+    const [currentCubeId, setCurrentCubeId] = useState<string | null>(null);
+    const [rotate, setRotate] = useState<number>(0);
+    const [cmdIndex, setCmdIndex] = useState<number>(0);
     return (
         <Box className='root' display='flex' gap={5}>
             <Box flex={1}>  
-                <CubeForm data={formState} setData={setFormState} setCurrentCubeId={setCurrentCubeId}/>
+                <CubeForm data={formState} 
+                    setData={setFormState} 
+                    setCurrentCubeId={setCurrentCubeId}  
+                    setRotate={setRotate}
+                    setCmdIndex={setCmdIndex}/>
             </Box>
             <Box width={365}>  
-                <Cubes currentCubeId={currentCubeId}/>
+                <Cubes currentCubeId={currentCubeId} rotate={rotate} cmdIndex={cmdIndex}/>
             </Box>
         </Box>
     );

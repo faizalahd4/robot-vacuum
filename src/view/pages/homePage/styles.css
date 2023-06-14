@@ -13,28 +13,31 @@
     border-radius: 5px;
     box-shadow: 1px 1px 4px #e3e5e7;
  }
+ .cubes-root {
+   position: relative;
+ }
  .row-box {
     height: 73px;
- }
- .text-field {
-    width: 100%
- }
- .text-field .MuiInputBase-input {
-    padding-top: 12px;
-    padding-bottom: 12px;
- }
- .select-field .MuiInputLabel-formControl {
-    line-height: 18px;
- }
- .text-field .MuiInputLabel-formControl {
-    line-height: 16px;
  }
  .form-layout {
    height: 100%;
  }
- .text-field .MuiOutlinedInput-notchedOutline, .select-field .MuiOutlinedInput-notchedOutline {
-   border-color: #e3e5e7;
- }
  .alert {
    margin-bottom: 20px
  }
+ .vacuum-icon {
+   position: absolute;
+   z-index: 1
+ }
+.rotate-east {
+  transform: rotate(0deg);
+}
+.rotate-west {
+  transform: rotate(180deg);
+}
+.rotate-north {
+  transform: rotate(-90deg);
+}
+.rotate-south {
+  transform: rotate(90deg);
+}

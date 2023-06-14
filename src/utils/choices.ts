@@ -13,12 +13,27 @@ export const facingDirectionMap: Record<string, string> = {
   [FacingDirection.west]: 'West',
 };
 
-export const cmdFacingDirectionMap: Record<DirectionCmd, FacingDirection> = {
-  [DirectionCmd.move]: FacingDirection.west,
-  [DirectionCmd.left]: FacingDirection.west,
-  [DirectionCmd.right]: FacingDirection.east,
-  [DirectionCmd.up]: FacingDirection.north,
-  [DirectionCmd.down]: FacingDirection.south,
+export const cmdFacingDirectionMap: Record<string, Record<DirectionCmd, FacingDirection>> = {
+  [FacingDirection.north]: {
+    [DirectionCmd.move]: FacingDirection.north,
+    [DirectionCmd.left]: FacingDirection.west,
+    [DirectionCmd.right]: FacingDirection.east,
+  },
+  [FacingDirection.south]: {
+    [DirectionCmd.move]: FacingDirection.south,
+    [DirectionCmd.left]: FacingDirection.east,
+    [DirectionCmd.right]: FacingDirection.west,
+  },
+  [FacingDirection.east]: {
+    [DirectionCmd.move]: FacingDirection.east,
+    [DirectionCmd.left]: FacingDirection.north,
+    [DirectionCmd.right]: FacingDirection.south,
+  },
+  [FacingDirection.west]: {
+    [DirectionCmd.move]: FacingDirection.west,
+    [DirectionCmd.left]: FacingDirection.south,
+    [DirectionCmd.right]: FacingDirection.north,
+  },
 };
 
 export const facingDirectionChoice = [
@@ -27,3 +42,16 @@ export const facingDirectionChoice = [
   { label: 'East', value: FacingDirection.east },
   { label: 'West', value: FacingDirection.west },
 ];
+
+export const facingDirectionDegreeMap: Record<string, number> = {
+  [FacingDirection.east]: -90,
+  [FacingDirection.west]: 90,
+  [FacingDirection.north]: 180,
+  [FacingDirection.south]: 0,
+};
+
+export const rotateDegreeMap: Record<DirectionCmd, number> = {
+  [DirectionCmd.move]: 0,
+  [DirectionCmd.left]: -90,
+  [DirectionCmd.right]: 90,
+};

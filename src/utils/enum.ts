@@ -15,6 +15,4 @@ export enum DirectionCmd {
     move = 'MOVE',
     left = 'LEFT',
     right = 'RIGHT',
-    up = 'UP',
-    down = 'DOWN'
 }
