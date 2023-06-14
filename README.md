@@ -61,6 +61,14 @@ MOVE
 MOVE
 LEFT
 REPORT: 3, 3, EAST
+
+## Screenshot
+<img width="100%" alt="Robot vacuum form without validation" src="https://github.com/faizalahd4/robot-vacuum/assets/35355081/0d1fb0ef-4a22-40a4-b760-a3e5ca5e4f68">
+<img width="100%" alt="Robot vacuum form with validation" src="https://github.com/faizalahd4/robot-vacuum/assets/35355081/e4747bce-05ed-44cc-8b47-a80ab2897bb9">
+<img width="100%" alt="Robot vacuum after form submit" src="https://github.com/faizalahd4/robot-vacuum/assets/35355081/db6890d6-75ab-4157-9fd8-c6eb086d66f5">
+
+
+
 ## Installation and Setup
 
 To run the application, please follow these steps:
