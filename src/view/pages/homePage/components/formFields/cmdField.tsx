@@ -6,11 +6,11 @@
  */
 // GENERIC IMPORT
 import {FieldErrors} from 'react-hook-form';
-import {Box, Button, Grid, FormHelperText} from '@mui/material';
+import {Box, Grid, FormHelperText} from '@mui/material';
 import {KeyboardArrowRight, KeyboardArrowLeft, DragIndicator} from '@mui/icons-material';
 
 // HOME IMPORT
-import { Chip } from "../../../../atoms";
+import { Chip, Button } from "../../../../atoms";
 import {CubeFormType} from '../../../../../models/cubeForm';
 
 // UTILS IMPORT
@@ -38,9 +38,9 @@ const CmdField = ({
         <Grid container spacing={1} mt={1} flex={1}>
             <Grid item xs={12}>
                 <Box display='flex' gap={1}>
-                    <Button variant="outlined" size="small" endIcon={<DragIndicator/>} onClick={() => addCmd(DirectionCmd.move)}>Move</Button>
-                    <Button variant="outlined" size="small" endIcon={<KeyboardArrowLeft/>}  onClick={() => addCmd(DirectionCmd.left)}>Left</Button>
-                    <Button variant="outlined" size="small" endIcon={<KeyboardArrowRight/>}  onClick={() => addCmd(DirectionCmd.right)}>Right</Button>
+                    <Button variant="outlined" size="small" endIcon={<DragIndicator/>} onClick={() => addCmd(DirectionCmd.move)} label='Move'/>
+                    <Button variant="outlined" size="small" endIcon={<KeyboardArrowLeft/>}  onClick={() => addCmd(DirectionCmd.left)} label='Left'/>
+                    <Button variant="outlined" size="small" endIcon={<KeyboardArrowRight/>}  onClick={() => addCmd(DirectionCmd.right)} label='Right'/>
                 </Box>
                 <FormHelperText error>{errors?.cmd && errors.cmd.message}</FormHelperText>
                 <Box className={classes.cmdConatiner}>

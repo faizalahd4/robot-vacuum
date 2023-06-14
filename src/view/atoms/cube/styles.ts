@@ -29,7 +29,7 @@ const useStyles = makeStyles(({palette}: Theme) => ({
     position: 'absolute',
     bottom: '2px',
     right: '2px',
-    color: palette.text.primary,
+    color: '#bdc3c7',
     fontSize: '9px',
   }
 }));

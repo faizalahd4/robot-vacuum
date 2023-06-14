@@ -25,7 +25,7 @@ const HomePage = () => {
     const [rotate, setRotate] = useState<number>(0);
     const [cmdIndex, setCmdIndex] = useState<number>(0);
     return (
-        <Box className={classes.root} display='flex' gap={5}>
+        <Box className={classes.root} gap={5}>
             <Box flex={1}>  
                 <CubeForm data={formState} 
                     setData={setFormState} 
@@ -33,7 +33,7 @@ const HomePage = () => {
                     setRotate={setRotate}
                     setCmdIndex={setCmdIndex}/>
             </Box>
-            <Box width={365}>  
+            <Box className={classes.rightContainer}>  
                 <Cubes currentCubeId={currentCubeId} rotate={rotate} cmdIndex={cmdIndex}/>
             </Box>
         </Box>

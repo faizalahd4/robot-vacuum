@@ -6,10 +6,10 @@
  */
 // GENERIC IMPORT
 import {SetStateAction, Dispatch, useState} from 'react';
-import {Box, Button, Grid} from '@mui/material';
+import {Box, Grid} from '@mui/material';
 
 // CUBE FORM IMPORT
-import { TextField, Alert } from "../../../atoms";
+import { TextField, Alert, Button } from "../../../atoms";
 import {CubeFormType, CubeReportType, cubeReportDefaultValue} from '../../../../models/cubeForm';
 import useCubeForm from '../useCubeForm';
 import FacingDirectionField from './formFields/facingDirectionField';
@@ -73,7 +73,9 @@ const CubeForm = ({
         <form onSubmit={handleSubmit(onSubmit)} className={classes.formLayout}>
             <input type="hidden" id="cmd" {...register("cmd" as const)} value={watch("cmd")} />
             <Box display='flex' flexDirection='column' height="100%">
-                <Alert severity="success" className='alert' isShow={Boolean(report?.facingDirection)} content={`Report: ${report.xPoint}, ${report.yPoint}, ${facingDirectionMap[report.facingDirection]}`}/>
+                <Box mb={2.5}>
+                    <Alert severity="success" className='alert' isShow={Boolean(report?.facingDirection)} content={`Report: ${report.xPoint}, ${report.yPoint}, ${facingDirectionMap[report.facingDirection]}`}/>
+                </Box>
                 <Grid container spacing={1}>
                     <Grid item xs={6}>
                         <TextField
@@ -104,8 +106,8 @@ const CubeForm = ({
                 <CmdField {...{data, errors, addCmd, deleteCmd}}/>
                 <Grid container spacing={1} mt={1}>
                     <Grid item xs={12} display='inline-flex' justifyContent='flex-end' gap={1}>
-                        <Button variant="contained" type="submit">Report</Button>
-                        <Button variant="outlined" onClick={resetHandler}>Cancel</Button>
+                        <Button variant="contained" type="submit" label='Report'/>
+                        <Button variant="outlined" onClick={resetHandler} label='Cancel'/>
                     </Grid>
                 </Grid>
             </Box>
