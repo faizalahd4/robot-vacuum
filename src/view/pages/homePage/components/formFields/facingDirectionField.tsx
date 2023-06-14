@@ -15,9 +15,6 @@ import {  SelectField } from "../../../../atoms";
 import {facingDirectionChoice} from '../../../../../utils/choices';
 import {CubeFormType} from '../../../../../models/cubeForm';
 
-// STYLE IMPORT
-import '../../styles.css';
-
 type FacingDirectionFieldProps = {
     control: UseFormReturn<CubeFormType>['control'];
     errors?: FieldErrors<CubeFormType>;
@@ -31,6 +28,7 @@ const FacingDirectionField = ({
     register,
     watch,
 }: FacingDirectionFieldProps) => {
+
     return (
         <Grid container spacing={1} mt={1}>
             <Grid item xs={12}>

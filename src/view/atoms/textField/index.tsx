@@ -10,7 +10,7 @@ import {Controller, FieldError, Control} from 'react-hook-form';
 import { TextField as MuiTextField } from '@mui/material';
 
 // STYLE IMPORT
-import './styles.css';
+import useStyles from './styles';
 
 type TextFieldProps = {
     register: any;
@@ -40,6 +40,7 @@ const TextField = ({
     multiline = false,
     rows = 1,
 }: TextFieldProps) => {
+    const classes = useStyles();
 
     return (
         <Controller
@@ -51,7 +52,7 @@ const TextField = ({
                     error={Boolean(errors)}
                     id={id || name}
                     type={type}
-                    classes={{root: 'inputFieldContainer'}}
+                    classes={{root: classes.inputFieldContainer}}
                     defaultValue={defaultValue || null}
                     placeholder={placeholder}
                     fullWidth
@@ -73,7 +74,7 @@ const TextField = ({
                         autoComplete: 'off',
                         role: 'presentation',
                         classes: {
-                           root: multiline ? 'multilineRow' : 'textFieldRoot',
+                           root: multiline ? classes.multilineRow : classes.textFieldRoot,
                            
                         }
                     }}

@@ -17,7 +17,7 @@ import {CUBE_PER_ROW, CUBE_PER_COLUMN} from '../../../../utils/constants';
 import Vacuum from './vacuum';
 
 // STYLE IMPORT
-import '../styles.css';
+import useStyles from '../styles';
 
 type CubesProps = {
     currentCubeId: string | null;
@@ -30,13 +30,14 @@ const Cubes = ({
     rotate,
     cmdIndex,
 }: CubesProps) => {
+    const classes = useStyles();
     const elementsByRow = Array.from({ length: CUBE_PER_ROW }, (_, i) => i);
     const elementsByColumn = Array.from({ length: CUBE_PER_COLUMN }, (_, i) => i);
     return (
-        <Box className='cubes-root' id='cubes-root'>
+        <Box className={classes.cubesRoot} id='cubes-root'>
             {currentCubeId && <Vacuum currentCubeId={currentCubeId} rotate={rotate} cmdIndex={cmdIndex}/>}
             {elementsByRow.map((_, rowIndex) => (
-                <Box key={`row-${rowIndex}`} className='row-box'>
+                <Box key={`row-${rowIndex}`} className={classes.rowBox}>
                     {elementsByColumn.map((_, columnIndex) => (
                         <Cube key={`${rowIndex}-${columnIndex}`} cubeId={`${rowIndex}-${columnIndex}`}/>
                     ))}

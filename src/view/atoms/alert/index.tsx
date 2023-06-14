@@ -7,9 +7,6 @@
 // GENERIC IMPORT
 import {AlertProps as MuiAlertProps, Alert as MuiAlert} from '@mui/material';
 
-// STYLE IMPORT
-import './styles.css';
-
 type AlertProps = {
   content: string;
   isShow: boolean;

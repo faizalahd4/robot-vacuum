@@ -8,12 +8,15 @@
 import {ChipProps, Chip as MuiChip} from '@mui/material';
 
 // STYLE IMPORT
-import './styles.css';
+import useStyles from './styles';
 
 const Chip = ({
   ...rest
-}: ChipProps) => (
-  <MuiChip {...rest} />
-);
+}: ChipProps) => {
+  const classes = useStyles();
+  return (
+    <MuiChip {...rest} className={classes.chipRoot}/>
+  )
+};
 
 export default Chip;

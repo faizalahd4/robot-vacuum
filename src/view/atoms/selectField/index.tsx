@@ -11,7 +11,7 @@ import {Controller, FieldError, Control} from 'react-hook-form';
 import { Select, MenuItem, FormHelperText, FormControl, InputLabel } from '@mui/material';
 
 // STYLE IMPORT
-import './styles.css';
+import useStyles from './styles';
 
 type OptionType = {
     label: string;
@@ -42,12 +42,14 @@ const SelectField = ({
     label,
     options,
 }: SelectFieldProps) => {
+    const classes = useStyles();
+
     return (
         <Controller
             control={control}
             name={name}
             render={(props) => (
-                <FormControl className='selectFieldContainer' error={Boolean(errors)} sx={{ width: '100%' }}>
+                <FormControl className={classes.selectFieldContainer} error={Boolean(errors)} sx={{ width: '100%' }}>
                     <InputLabel id={`${id || name}-label`}>{label}</InputLabel>
                     <Select
                         {...register(name)}
@@ -55,7 +57,7 @@ const SelectField = ({
                         id={id || name}
                         variant="outlined"
                         placeholder={placeholder}
-                        className='selectField'
+                        className={classes.selectField}
                         size="small"
                         label={label}
                         value={defaultValue || ''}
@@ -71,13 +73,13 @@ const SelectField = ({
                             autoComplete: 'off',
                             role: 'presentation',
                             classes: {
-                                root: 'selectFieldRoot',
+                                root: classes.selectFieldRoot,
                             }
                         }}
                         displayEmpty
                     >
                         {options.map((option: OptionType) => (
-                            <MenuItem value={option.value} className='selectFieldOption' key={option.value}>{option.label}</MenuItem>
+                            <MenuItem value={option.value} className={classes.selectFieldOption} key={option.value}>{option.label}</MenuItem>
                         ))}
                     </Select>
                 <FormHelperText>{errors?.message}</FormHelperText>

@@ -19,7 +19,7 @@ import CmdField from './formFields/cmdField';
 import {facingDirectionMap, facingDirectionDegreeMap} from '../../../../utils/choices';
 
 // STYLE IMPORT
-import '../styles.css';
+import useStyles from '../styles';
 
 type CubeFormProps = {
     data: CubeFormType;
@@ -36,6 +36,7 @@ const CubeForm = ({
     setRotate,
     setCmdIndex,
 }: CubeFormProps) => {
+    const classes = useStyles();
     const [report, setReport] = useState<CubeReportType>(cubeReportDefaultValue);
     const {
         control,
@@ -69,7 +70,7 @@ const CubeForm = ({
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className='form-layout'>
+        <form onSubmit={handleSubmit(onSubmit)} className={classes.formLayout}>
             <input type="hidden" id="cmd" {...register("cmd" as const)} value={watch("cmd")} />
             <Box display='flex' flexDirection='column' height="100%">
                 <Alert severity="success" className='alert' isShow={Boolean(report?.facingDirection)} content={`Report: ${report.xPoint}, ${report.yPoint}, ${facingDirectionMap[report.facingDirection]}`}/>

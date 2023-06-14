@@ -17,7 +17,7 @@ import {CubeFormType} from '../../../../../models/cubeForm';
 import {DirectionCmd} from '../../../../../utils/enum';
 
 // STYLE IMPORT
-import '../../styles.css';
+import useStyles from '../../styles';
 
 type CmdFieldProps = {
     data: CubeFormType;
@@ -32,6 +32,7 @@ const CmdField = ({
     addCmd,
     deleteCmd,
 }: CmdFieldProps) => {
+    const classes = useStyles();
 
     return (
         <Grid container spacing={1} mt={1} flex={1}>
@@ -42,7 +43,7 @@ const CmdField = ({
                     <Button variant="outlined" size="small" endIcon={<KeyboardArrowRight/>}  onClick={() => addCmd(DirectionCmd.right)}>Right</Button>
                 </Box>
                 <FormHelperText error>{errors?.cmd && errors.cmd.message}</FormHelperText>
-                <Box className='cmdConatiner'>
+                <Box className={classes.cmdConatiner}>
                     {data.cmd?.map((item, index) => (<Chip onDelete={() => deleteCmd(index)} label={item} size="small" key={index} />))}
                 </Box>
             </Grid>

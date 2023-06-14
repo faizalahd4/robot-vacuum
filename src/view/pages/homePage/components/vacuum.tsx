@@ -11,7 +11,7 @@ import {useState, useEffect} from 'react';
 import VacuumImage from '../../../../assets/icons/vacuum.png';
 
 // STYLE IMPORT
-import '../styles.css';
+import useStyles from '../styles';
 
 type VacuumProps = {
     currentCubeId: string;
@@ -24,6 +24,7 @@ const Vacuum = ({
     rotate,
     cmdIndex,
 }: VacuumProps) => {
+    const classes = useStyles();
     const [position, setPosition] = useState({x: 0, y: 0});
     const [rotation, setRotation] = useState(0);
     const selectedCubeContainer = document.getElementById('cubes-root');
@@ -45,7 +46,7 @@ const Vacuum = ({
     return (
         <img src={VacuumImage} 
             alt='Robot Vacuum' 
-            className='vacuum-icon' 
+            className={classes.vacuumIcon}
             width={50}
             style={{
                 top: `${position.x}px`,

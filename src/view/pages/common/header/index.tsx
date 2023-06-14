@@ -8,12 +8,16 @@
 import DirectionImage from '../../../../assets/icons/direction.png';
 
 // STYLE IMPORT
-import './styles.css';
+import useStyles from './styles';
 
-const Header = () => (
-    <header className='header-title'>
-        <img src={DirectionImage} alt='direction'/>Robot Vacuum   
-    </header>
-);
+const Header = () => {
+    const classes = useStyles();
+
+    return (
+        <header className={classes.headerTitle}>
+            <img src={DirectionImage} alt='direction'/>Robot Vacuum   
+        </header>
+    )
+};
 
 export default Header;
