@@ -1,10 +1,19 @@
-# Getting Started with Create React App
+# Robot Vacuum
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This application is a simulation of a robot vacuum moving in an area of dimensions 5 units by 5 units. The robot is free to roam around the area but must be prevented from leaving the area. The goal is to create a web interface that accepts commands and displays the result of the robot's movements.
 
-## Available Scripts
+## Technologies Used
+React: A JavaScript library for building user interfaces.
+React Material UI: A popular React UI component library that provides ready-to-use components for a polished user interface.
+TypeScript: A typed superset of JavaScript that compiles to plain JavaScript.
 
-In the project directory, you can run:
+## Installation and Setup
+
+To run the application, please follow these steps:
+
+### `git clone https://github.com/faizalahd4/robot-vacuum.git`
+
+Clone the project into your local machine.
 
 ### `npm start`
 
@@ -39,8 +48,33 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Validation to follow
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Currently we have four field - x point, y point, facing direction and command.
+- X Point: Need to provide only number between 0 to 4 else it will throw error.
+- Y Point: Need to provide only number between 0 to 4 else it will throw error.
+- Facing direction: Need to select one option from the drop down (North, South, East & West).
+- Command - Currently we will be having three command (Move, Left & Right. Can select upto 20 command).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## How it works
+- We need 5 x 5 unit martix boxes. Initially the robot vacuum will be hidden.
+- We will have four direction like north (upside), south (downside), east (right side) and west (left side).
+- Once user chose valid x point, y point, facing direction & few command and then click the report button, the robat vacuum will be placed in the exact initail spot, then it will be moved and change direction depend upon the command we chosen.
+- When your click cancel button all the form field will be cleared and robot vacuum will be hidden.
+
+### Example 1
+PLACE 0, 0 SOUTH
+MOVE
+MOVE
+LEFT
+REPORT: 2, 0, EAST
+
+### Example 2
+PLACE 1, 2 EAST
+MOVE
+RIGHT
+MOVE
+MOVE
+LEFT
+REPORT: 3, 3, EAST
+
