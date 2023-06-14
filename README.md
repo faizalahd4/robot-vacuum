@@ -3,10 +3,64 @@
 This application is a simulation of a robot vacuum moving in an area of dimensions 5 units by 5 units. The robot is free to roam around the area but must be prevented from leaving the area. The goal is to create a web interface that accepts commands and displays the result of the robot's movements.
 
 ## Technologies Used
-React: A JavaScript library for building user interfaces.
-React Material UI: A popular React UI component library that provides ready-to-use components for a polished user interface.
-TypeScript: A typed superset of JavaScript that compiles to plain JavaScript.
 
+- React: A JavaScript library for building user interfaces.
+- React Material UI: A popular React UI component library that provides ready-to-use components for a polished user interface.
+- TypeScript: A typed superset of JavaScript that compiles to plain JavaScript.
+- React hook form: A react hook form used to validatte form.
+
+## Project folder structure
+
+- public folder: Hold index.html and new favIcon.
+- src
+  - assets
+    - fonts: Folder hold all the necessary font files for the project.
+    - Icon : Folder hold all the necessary image files for the project.
+  - models: Folder hold all the necessary type for the form.
+  - utils
+    - choice.ts: Hold all the map and array of the object needed for the project.
+    - constants.ts: Hold all the constants needed for the project. 
+    - enum.ts: Hold all the enum needed for the project.
+    - validationMessages.ts: Hold all the validation message for the schema for react hook form.
+  - view
+    - atoms: Hold all the basic components.
+    - pages: Hold all the page components.
+    - routes: Hold all the files related to router.
+  - App.tsx: Hold router and theme provider.
+  - index.tsx: Root of the project.
+  - theme.ts: Hold theme for the project.
+- package.json: Hold all the node package module with version.
+
+## Validation to follow
+
+We currently have four fields: X point, Y point, facing direction, and command.
+- X Point: You must enter a number between 0 and 4; otherwise, an error will occur.
+- Y Point: You must enter a number between 0 and 4; otherwise, an error will occur.
+- Facing direction: You need to select one option from the drop-down menu (North, South, East, or West).
+- Command: Currently, we have three commands (Move, Left, and Right). You can select up to 20 commands.
+
+## How it works
+
+We require a 5x5 unit matrix of boxes. Initially, the robot vacuum will be concealed.
+- We will have four directions: north (upward), south (downward), east (rightward), and west (leftward).
+- Once the user selects a valid x point, y point, facing direction, and a few commands, and then clicks the report button, the robot vacuum will be positioned precisely at the initial spot. It will subsequently move and change direction based on the chosen commands.
+- Clicking the cancel button will clear all form fields and hide the robot vacuum.
+
+### Example 1
+PLACE 0, 0 SOUTH
+MOVE
+MOVE
+LEFT
+REPORT: 2, 0, EAST
+
+### Example 2
+PLACE 1, 2 EAST
+MOVE
+RIGHT
+MOVE
+MOVE
+LEFT
+REPORT: 3, 3, EAST
 ## Installation and Setup
 
 To run the application, please follow these steps:
@@ -47,35 +101,3 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Validation to follow
-
-We currently have four fields: X point, Y point, facing direction, and command.
-- X Point: You must enter a number between 0 and 4; otherwise, an error will occur.
-- Y Point: You must enter a number between 0 and 4; otherwise, an error will occur.
-- Facing direction: You need to select one option from the drop-down menu (North, South, East, or West).
-- Command: Currently, we have three commands (Move, Left, and Right). You can select up to 20 commands.
-
-## How it works
-
-We require a 5x5 unit matrix of boxes. Initially, the robot vacuum will be concealed.
-- We will have four directions: north (upward), south (downward), east (rightward), and west (leftward).
-- Once the user selects a valid x point, y point, facing direction, and a few commands, and then clicks the report button, the robot vacuum will be positioned precisely at the initial spot. It will subsequently move and change direction based on the chosen commands.
-- Clicking the cancel button will clear all form fields and hide the robot vacuum.
-
-### Example 1
-PLACE 0, 0 SOUTH
-MOVE
-MOVE
-LEFT
-REPORT: 2, 0, EAST
-
-### Example 2
-PLACE 1, 2 EAST
-MOVE
-RIGHT
-MOVE
-MOVE
-LEFT
-REPORT: 3, 3, EAST
-
