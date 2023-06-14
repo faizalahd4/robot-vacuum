@@ -50,17 +50,18 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Validation to follow
 
-Currently we have four field - x point, y point, facing direction and command.
-- X Point: Need to provide only number between 0 to 4 else it will throw error.
-- Y Point: Need to provide only number between 0 to 4 else it will throw error.
-- Facing direction: Need to select one option from the drop down (North, South, East & West).
-- Command - Currently we will be having three command (Move, Left & Right. Can select upto 20 command).
+We currently have four fields: X point, Y point, facing direction, and command.
+- X Point: You must enter a number between 0 and 4; otherwise, an error will occur.
+- Y Point: You must enter a number between 0 and 4; otherwise, an error will occur.
+- Facing direction: You need to select one option from the drop-down menu (North, South, East, or West).
+- Command: Currently, we have three commands (Move, Left, and Right). You can select up to 20 commands.
 
 ## How it works
-- We need 5 x 5 unit martix boxes. Initially the robot vacuum will be hidden.
-- We will have four direction like north (upside), south (downside), east (right side) and west (left side).
-- Once user chose valid x point, y point, facing direction & few command and then click the report button, the robat vacuum will be placed in the exact initail spot, then it will be moved and change direction depend upon the command we chosen.
-- When your click cancel button all the form field will be cleared and robot vacuum will be hidden.
+
+We require a 5x5 unit matrix of boxes. Initially, the robot vacuum will be concealed.
+- We will have four directions: north (upward), south (downward), east (rightward), and west (leftward).
+- Once the user selects a valid x point, y point, facing direction, and a few commands, and then clicks the report button, the robot vacuum will be positioned precisely at the initial spot. It will subsequently move and change direction based on the chosen commands.
+- Clicking the cancel button will clear all form fields and hide the robot vacuum.
 
 ### Example 1
 PLACE 0, 0 SOUTH
